@@ -10,33 +10,90 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlumniRouteImport } from './routes/alumni'
+import { Route as BeritaRouteImport } from './routes/berita'
+import { Route as EventRouteImport } from './routes/event'
+import { Route as LowonganRouteImport } from './routes/lowongan'
+import { Route as TentangRouteImport } from './routes/tentang'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlumniRoute = AlumniRouteImport.update({
+  id: '/alumni',
+  path: '/alumni',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeritaRoute = BeritaRouteImport.update({
+  id: '/berita',
+  path: '/berita',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventRoute = EventRouteImport.update({
+  id: '/event',
+  path: '/event',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LowonganRoute = LowonganRouteImport.update({
+  id: '/lowongan',
+  path: '/lowongan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TentangRoute = TentangRouteImport.update({
+  id: '/tentang',
+  path: '/tentang',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alumni': typeof AlumniRoute
+  '/berita': typeof BeritaRoute
+  '/event': typeof EventRoute
+  '/lowongan': typeof LowonganRoute
+  '/tentang': typeof TentangRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alumni': typeof AlumniRoute
+  '/berita': typeof BeritaRoute
+  '/event': typeof EventRoute
+  '/lowongan': typeof LowonganRoute
+  '/tentang': typeof TentangRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alumni': typeof AlumniRoute
+  '/berita': typeof BeritaRoute
+  '/event': typeof EventRoute
+  '/lowongan': typeof LowonganRoute
+  '/tentang': typeof TentangRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/alumni' | '/berita' | '/event' | '/lowongan' | '/tentang'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/alumni' | '/berita' | '/event' | '/lowongan' | '/tentang'
+  id:
+    | '__root__'
+    | '/'
+    | '/alumni'
+    | '/berita'
+    | '/event'
+    | '/lowongan'
+    | '/tentang'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlumniRoute: typeof AlumniRoute
+  BeritaRoute: typeof BeritaRoute
+  EventRoute: typeof EventRoute
+  LowonganRoute: typeof LowonganRoute
+  TentangRoute: typeof TentangRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +105,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alumni': {
+      id: '/alumni'
+      path: '/alumni'
+      fullPath: '/alumni'
+      preLoaderRoute: typeof AlumniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/berita': {
+      id: '/berita'
+      path: '/berita'
+      fullPath: '/berita'
+      preLoaderRoute: typeof BeritaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/event': {
+      id: '/event'
+      path: '/event'
+      fullPath: '/event'
+      preLoaderRoute: typeof EventRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lowongan': {
+      id: '/lowongan'
+      path: '/lowongan'
+      fullPath: '/lowongan'
+      preLoaderRoute: typeof LowonganRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tentang': {
+      id: '/tentang'
+      path: '/tentang'
+      fullPath: '/tentang'
+      preLoaderRoute: typeof TentangRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlumniRoute: AlumniRoute,
+  BeritaRoute: BeritaRoute,
+  EventRoute: EventRoute,
+  LowonganRoute: LowonganRoute,
+  TentangRoute: TentangRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
