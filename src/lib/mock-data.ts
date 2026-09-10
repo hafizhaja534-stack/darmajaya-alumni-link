@@ -95,15 +95,18 @@ export interface AppNotification {
   read: boolean;
 }
 
-export const FACULTIES = ["Fakultas Ilmu Komputer", "Fakultas Ekonomi dan Bisnis"];
+const FILKOM = "Fakultas Ilmu Komputer";
+const FEB = "Fakultas Ekonomi dan Bisnis";
+
+export const FACULTIES = [FILKOM, FEB];
 
 export const PROGRAMS: Program[] = [
-  { id: 1, faculty: FACULTIES[0], name: "Teknik Informatika" },
-  { id: 2, faculty: FACULTIES[0], name: "Sistem Informasi" },
-  { id: 3, faculty: FACULTIES[0], name: "Teknik Komputer" },
-  { id: 4, faculty: FACULTIES[1], name: "Manajemen" },
-  { id: 5, faculty: FACULTIES[1], name: "Akuntansi" },
-  { id: 6, faculty: FACULTIES[1], name: "Bisnis Digital" },
+  { id: 1, faculty: FILKOM, name: "Teknik Informatika" },
+  { id: 2, faculty: FILKOM, name: "Sistem Informasi" },
+  { id: 3, faculty: FILKOM, name: "Teknik Komputer" },
+  { id: 4, faculty: FEB, name: "Manajemen" },
+  { id: 5, faculty: FEB, name: "Akuntansi" },
+  { id: 6, faculty: FEB, name: "Bisnis Digital" },
 ];
 
 export const PROVINCES = ["Lampung", "DKI Jakarta", "Jawa Barat", "Banten", "Jawa Timur"];
