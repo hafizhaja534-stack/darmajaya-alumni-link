@@ -13,8 +13,7 @@ export const Route = createFileRoute("/alumni")({
       { title: "Direktori Alumni — Darmajaya Alumni Connect" },
       {
         name: "description",
-        content:
-          "Cari dan temukan alumni IIB Darmajaya berdasarkan nama dan program studi.",
+        content: "Cari dan temukan alumni IIB Darmajaya berdasarkan nama dan program studi.",
       },
       { property: "og:title", content: "Direktori Alumni IIB Darmajaya" },
       {
@@ -32,10 +31,7 @@ function DirektoriAlumni() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return ALUMNI.filter((a) => a.is_public).filter(
-      (a) =>
-        !q ||
-        a.full_name.toLowerCase().includes(q) ||
-        a.program.toLowerCase().includes(q),
+      (a) => !q || a.full_name.toLowerCase().includes(q) || a.program.toLowerCase().includes(q),
     );
   }, [query]);
 
@@ -69,8 +65,8 @@ function DirektoriAlumni() {
         ) : (
           <div className="grid gap-5">
             {filtered.map((a) => (
-            <AlumniCard key={a.id} alumni={a} />
-          ))}
+              <AlumniCard key={a.id} alumni={a} />
+            ))}
           </div>
         )}
       </div>

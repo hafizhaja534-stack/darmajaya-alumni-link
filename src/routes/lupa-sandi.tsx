@@ -65,8 +65,9 @@ function LupaSandiPage() {
         <div className="space-y-4 text-center">
           <CheckCircle2 className="mx-auto h-12 w-12 text-primary" />
           <p className="text-sm text-muted-foreground">
-            Tautan pengaturan ulang telah dikirim ke <span className="font-medium text-foreground">{email}</span>.
-            Tautan berlaku selama 60 menit.
+            Tautan pengaturan ulang telah dikirim ke{" "}
+            <span className="font-medium text-foreground">{email}</span>. Tautan berlaku selama 60
+            menit.
           </p>
           <Button variant="outline" className="w-full" onClick={() => setSent(false)}>
             Kirim ulang
@@ -87,7 +88,10 @@ function LupaSandiPage() {
             />
           </div>
           {error ? (
-            <p role="alert" className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
+            <p
+              role="alert"
+              className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive"
+            >
               {error}
             </p>
           ) : null}

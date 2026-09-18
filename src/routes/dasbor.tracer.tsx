@@ -55,7 +55,9 @@ function TracerPage() {
     window.setTimeout(() => {
       setSaving(false);
       setDone(true);
-      toast.success("Tracer study terkirim", { description: "Terima kasih atas partisipasi Anda." });
+      toast.success("Tracer study terkirim", {
+        description: "Terima kasih atas partisipasi Anda.",
+      });
     }, 800);
   }
 
@@ -152,7 +154,10 @@ function TracerPage() {
           </div>
 
           {error ? (
-            <p role="alert" className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
+            <p
+              role="alert"
+              className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive"
+            >
               {error}
             </p>
           ) : null}

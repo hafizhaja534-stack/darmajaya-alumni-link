@@ -12,12 +12,7 @@ export type EmploymentType = "full_time" | "part_time" | "contract" | "internshi
 export type Workplace = "onsite" | "hybrid" | "remote";
 export type EventType = "reunion" | "seminar" | "workshop" | "webinar" | "career" | "other";
 export type EventMode = "online" | "offline" | "hybrid";
-export type ApplicationStatus =
-  | "submitted"
-  | "reviewing"
-  | "shortlisted"
-  | "rejected"
-  | "accepted";
+export type ApplicationStatus = "submitted" | "reviewing" | "shortlisted" | "rejected" | "accepted";
 
 export interface Program {
   id: number;
@@ -461,7 +456,8 @@ export const EVENTS: AlumniEvent[] = [
     quota: 500,
     registered: 312,
     register_deadline: "2026-10-05",
-    excerpt: "Reuni akbar lintas angkatan dengan sesi ramah tamah, talkshow, dan bazar UMKM alumni.",
+    excerpt:
+      "Reuni akbar lintas angkatan dengan sesi ramah tamah, talkshow, dan bazar UMKM alumni.",
   },
   {
     id: 2,
@@ -506,7 +502,8 @@ export const EVENTS: AlumniEvent[] = [
     quota: 1000,
     registered: 421,
     register_deadline: "2026-11-01",
-    excerpt: "Lebih dari 40 perusahaan mitra membuka rekrutmen langsung untuk alumni dan mahasiswa.",
+    excerpt:
+      "Lebih dari 40 perusahaan mitra membuka rekrutmen langsung untuk alumni dan mahasiswa.",
   },
 ];
 

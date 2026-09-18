@@ -165,8 +165,7 @@ function LowonganPage() {
                     <Briefcase className="h-4 w-4 text-primary" /> {active.salary_range}
                   </p>
                   <p className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-primary" /> Ditutup{" "}
-                    {formatDate(active.deadline)}
+                    <Clock className="h-4 w-4 text-primary" /> Ditutup {formatDate(active.deadline)}
                   </p>
                   <p className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-primary" /> Diposting{" "}

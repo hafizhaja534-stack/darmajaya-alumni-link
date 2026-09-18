@@ -30,8 +30,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Darmajaya Alumni Connect" },
       {
         property: "og:description",
-        content:
-          "Terhubung, berkembang, dan berkontribusi bersama jaringan alumni IIB Darmajaya.",
+        content: "Terhubung, berkembang, dan berkontribusi bersama jaringan alumni IIB Darmajaya.",
       },
     ],
   }),
@@ -257,7 +256,9 @@ function Section({
     <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:py-18">
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">{eyebrow}</p>
+          <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+            {eyebrow}
+          </p>
           <h2 className="mt-2 text-2xl font-bold text-foreground md:text-3xl">{title}</h2>
           {description ? (
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{description}</p>

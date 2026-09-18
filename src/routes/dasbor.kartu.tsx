@@ -58,7 +58,9 @@ function KartuPage() {
         <Button
           size="sm"
           variant="outline"
-          onClick={() => toast.success("Kartu disiapkan", { description: "Berkas kartu akan diunduh." })}
+          onClick={() =>
+            toast.success("Kartu disiapkan", { description: "Berkas kartu akan diunduh." })
+          }
         >
           <Download className="h-4 w-4" /> Unduh kartu
         </Button>
