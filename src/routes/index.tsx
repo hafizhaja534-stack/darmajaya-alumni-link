@@ -2,20 +2,13 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   BadgeCheck,
-  Briefcase,
-  CalendarDays,
-  CreditCard,
-  GraduationCap,
-  Newspaper,
   Search,
-  Users,
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-alumni.jpg";
 import { PublicLayout } from "@/components/public-layout";
 import { AlumniCard, EventCard, JobCard, NewsCard } from "@/components/entity-cards";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { ALUMNI, EVENTS, JOBS, NEWS, STATS } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/")({
@@ -36,39 +29,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Beranda,
 });
-
-const FEATURES = [
-  {
-    icon: Users,
-    title: "Direktori Alumni",
-    desc: "Temukan alumni berdasarkan program studi, angkatan, kota, dan industri.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Tracer Study",
-    desc: "Isi kuesioner penelusuran lulusan untuk pengembangan kualitas kampus.",
-  },
-  {
-    icon: Briefcase,
-    title: "Lowongan Kerja",
-    desc: "Peluang karier dari perusahaan mitra khusus untuk alumni Darmajaya.",
-  },
-  {
-    icon: CalendarDays,
-    title: "Event Alumni",
-    desc: "Reuni, seminar, workshop, hingga career expo dengan pendaftaran daring.",
-  },
-  {
-    icon: CreditCard,
-    title: "Kartu Alumni Digital",
-    desc: "Identitas alumni ber-QR Code untuk akses layanan kampus dan mitra.",
-  },
-  {
-    icon: Newspaper,
-    title: "Berita Alumni",
-    desc: "Kabar prestasi, pengumuman, dan kegiatan terbaru komunitas alumni.",
-  },
-];
 
 function Beranda() {
   const stats = [
@@ -136,27 +96,6 @@ function Beranda() {
           ))}
         </div>
       </section>
-
-      {/* Fitur */}
-      <Section
-        eyebrow="Fitur Utama"
-        title="Satu portal untuk seluruh kebutuhan alumni"
-        description="Semua layanan alumni Darmajaya dalam satu tempat yang rapi dan mudah digunakan."
-      >
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((f) => (
-            <Card key={f.title} className="card-hover">
-              <CardContent className="space-y-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-soft text-primary">
-                  <f.icon className="h-5 w-5" />
-                </span>
-                <h3 className="text-base font-semibold text-foreground">{f.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </Section>
 
       {/* Alumni terbaru */}
       <Section

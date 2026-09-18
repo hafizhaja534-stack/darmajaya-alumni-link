@@ -57,7 +57,7 @@ const CATEGORY_OPTIONS = ["Prestasi", "Pengumuman", "Layanan", "Kegiatan", "Umum
 const EMPTY: NewsDraft = {
   slug: "",
   title: "",
-  category: CATEGORY_OPTIONS[0],
+  category: CATEGORY_OPTIONS[0]!,
   excerpt: "",
   image_url:
     "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=70",

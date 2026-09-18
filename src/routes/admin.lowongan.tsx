@@ -64,7 +64,7 @@ const EMPTY: JobDraft = {
   title: "",
   company_name: "",
   company_logo: "DJ",
-  industry: INDUSTRIES[0],
+  industry: INDUSTRIES[0]!,
   city: "Bandar Lampung",
   province: "Lampung",
   salary_range: "",

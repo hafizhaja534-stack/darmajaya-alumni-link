@@ -15,7 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PROGRAMS } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/daftar")({
@@ -25,12 +24,12 @@ export const Route = createFileRoute("/daftar")({
       {
         name: "description",
         content:
-          "Buat akun alumni atau perusahaan mitra untuk bergabung di portal resmi alumni IIB Darmajaya.",
+          "Buat akun alumni untuk bergabung di portal resmi alumni IIB Darmajaya.",
       },
       { property: "og:title", content: "Daftar — Darmajaya Alumni Connect" },
       {
         property: "og:description",
-        content: "Registrasi alumni dan perusahaan mitra IIB Darmajaya.",
+        content: "Registrasi alumni IIB Darmajaya.",
       },
     ],
   }),
@@ -41,14 +40,12 @@ const YEARS = Array.from({ length: 30 }, (_, i) => 2026 - i);
 
 function DaftarPage() {
   const navigate = useNavigate();
-  const [role, setRole] = useState<"alumni" | "company">("alumni");
   const [form, setForm] = useState({
     name: "",
     email: "",
     nim: "",
     program: "",
     year: "",
-    company: "",
     password: "",
     confirm: "",
   });
@@ -65,13 +62,9 @@ function DaftarPage() {
 
     if (form.name.trim().length < 3) return setError("Nama lengkap minimal 3 karakter.");
     if (!/^\S+@\S+\.\S+$/.test(form.email)) return setError("Format email tidak valid.");
-    if (role === "alumni") {
-      if (!/^\d{8,12}$/.test(form.nim)) return setError("NIM harus berupa 8-12 digit angka.");
-      if (!form.program) return setError("Pilih program studi Anda.");
-      if (!form.year) return setError("Pilih tahun lulus Anda.");
-    } else if (form.company.trim().length < 3) {
-      return setError("Nama perusahaan minimal 3 karakter.");
-    }
+    if (!/^\d{8,12}$/.test(form.nim)) return setError("NIM harus berupa 8-12 digit angka.");
+    if (!form.program) return setError("Pilih program studi Anda.");
+    if (!form.year) return setError("Pilih tahun lulus Anda.");
     if (form.password.length < 8) return setError("Kata sandi minimal 8 karakter.");
     if (form.password !== form.confirm) return setError("Konfirmasi kata sandi tidak cocok.");
     if (!agree) return setError("Anda harus menyetujui ketentuan penggunaan data.");
@@ -99,18 +92,9 @@ function DaftarPage() {
         </>
       }
     >
-      <Tabs value={role} onValueChange={(v) => setRole(v as typeof role)} className="mb-5">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="alumni">Alumni</TabsTrigger>
-          <TabsTrigger value="company">Perusahaan</TabsTrigger>
-        </TabsList>
-      </Tabs>
-
       <form onSubmit={onSubmit} className="space-y-4" noValidate>
         <div className="space-y-2">
-          <Label htmlFor="name">
-            {role === "alumni" ? "Nama lengkap" : "Nama penanggung jawab"}
-          </Label>
+          <Label htmlFor="name">Nama lengkap</Label>
           <Input
             id="name"
             value={form.name}
@@ -132,66 +116,51 @@ function DaftarPage() {
           />
         </div>
 
-        {role === "alumni" ? (
-          <>
-            <div className="space-y-2">
-              <Label htmlFor="nim">NIM</Label>
-              <Input
-                id="nim"
-                inputMode="numeric"
-                value={form.nim}
-                onChange={(e) => set("nim")(e.target.value)}
-                placeholder="Contoh: 1611010045"
-                required
-              />
-            </div>
+        <div className="space-y-2">
+          <Label htmlFor="nim">NIM</Label>
+          <Input
+            id="nim"
+            inputMode="numeric"
+            value={form.nim}
+            onChange={(e) => set("nim")(e.target.value)}
+            placeholder="Contoh: 1611010045"
+            required
+          />
+        </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <Label>Program studi</Label>
-                <Select value={form.program} onValueChange={set("program")}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Pilih prodi" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {PROGRAMS.map((p) => (
-                      <SelectItem key={p.id} value={p.name}>
-                        {p.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label>Tahun lulus</Label>
-                <Select value={form.year} onValueChange={set("year")}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Pilih tahun" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {YEARS.map((y) => (
-                      <SelectItem key={y} value={String(y)}>
-                        {y}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </>
-        ) : (
+        <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <Label htmlFor="company">Nama perusahaan</Label>
-            <Input
-              id="company"
-              value={form.company}
-              onChange={(e) => set("company")(e.target.value)}
-              placeholder="PT Contoh Nusantara"
-              required
-            />
+            <Label>Program studi</Label>
+            <Select value={form.program} onValueChange={set("program")}>
+              <SelectTrigger>
+                <SelectValue placeholder="Pilih prodi" />
+              </SelectTrigger>
+              <SelectContent>
+                {PROGRAMS.map((p) => (
+                  <SelectItem key={p.id} value={p.name}>
+                    {p.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
-        )}
+
+          <div className="space-y-2">
+            <Label>Tahun lulus</Label>
+            <Select value={form.year} onValueChange={set("year")}>
+              <SelectTrigger>
+                <SelectValue placeholder="Pilih tahun" />
+              </SelectTrigger>
+              <SelectContent>
+                {YEARS.map((y) => (
+                  <SelectItem key={y} value={String(y)}>
+                    {y}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
