@@ -21,7 +21,7 @@ import { ALUMNI, EVENTS, JOBS, NEWS, STATS } from "@/lib/mock-data";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Darmajaya Alumni Connect — Portal Resmi Alumni IIB Darmajaya" },
+      { title: "IKA IIB DARMAJAYA — Ikatan Keluarga Alumni IIB Darmajaya" },
       {
         name: "description",
         content:

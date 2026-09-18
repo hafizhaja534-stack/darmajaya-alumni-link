@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 import { EmptyState } from "@/components/entity-cards";
@@ -16,16 +16,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CalendarDays, Clock, MapPin, Ticket, Users } from "lucide-react";
+
 import {
   EVENTS,
   EVENT_MODE_LABEL,
   EVENT_TYPE_LABEL,
   formatDate,
   type AlumniEvent,
-  type EventType,
 } from "@/lib/mock-data";
-import { CalendarDays, Clock, MapPin, Ticket, Users } from "lucide-react";
 
 export const Route = createFileRoute("/event")({
   head: () => ({
@@ -46,23 +45,7 @@ export const Route = createFileRoute("/event")({
   component: EventPage,
 });
 
-const TYPES: (EventType | "semua")[] = [
-  "semua",
-  "reunion",
-  "seminar",
-  "workshop",
-  "webinar",
-  "career",
-];
-
 function EventPage() {
-  const [type, setType] = useState<string>("semua");
-
-  const list = useMemo(
-    () => (type === "semua" ? EVENTS : EVENTS.filter((e) => e.type === type)),
-    [type],
-  );
-
   return (
     <PublicLayout>
       <PageHeader
@@ -72,24 +55,14 @@ function EventPage() {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-        <Tabs value={type} onValueChange={setType} className="mb-8">
-          <TabsList className="flex-wrap">
-            {TYPES.map((t) => (
-              <TabsTrigger key={t} value={t}>
-                {t === "semua" ? "Semua" : EVENT_TYPE_LABEL[t as EventType]}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </Tabs>
-
-        {list.length === 0 ? (
+        {EVENTS.length === 0 ? (
           <EmptyState
             title="Belum ada event"
-            description="Belum ada event pada kategori ini. Silakan pilih kategori lain."
+            description="Saat ini belum ada event terjadwal. Silakan kembali lagi nanti."
           />
         ) : (
-          <div className="grid gap-6 lg:grid-cols-2">
-            {list.map((e) => (
+          <div className="grid gap-6">
+            {EVENTS.map((e) => (
               <EventDetailCard key={e.id} event={e} />
             ))}
           </div>
@@ -128,7 +101,7 @@ function EventDetailCard({ event }: { event: AlumniEvent }) {
         </div>
         <h2 className="text-lg font-semibold text-foreground">{event.title}</h2>
         <p className="text-sm leading-relaxed text-muted-foreground">{event.excerpt}</p>
-        <div className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+        <div className="space-y-1.5 text-sm text-muted-foreground">
           <p className="flex items-center gap-2">
             <CalendarDays className="h-4 w-4 text-primary" /> {formatDate(event.date)}
           </p>

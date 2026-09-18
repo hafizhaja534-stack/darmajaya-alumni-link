@@ -10,15 +10,39 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AlumniRouteImport } from './routes/alumni'
 import { Route as BeritaRouteImport } from './routes/berita'
+import { Route as DaftarRouteImport } from './routes/daftar'
+import { Route as DasborRouteImport } from './routes/dasbor'
 import { Route as EventRouteImport } from './routes/event'
 import { Route as LowonganRouteImport } from './routes/lowongan'
+import { Route as LupaSandiRouteImport } from './routes/lupa-sandi'
+import { Route as MasukRouteImport } from './routes/masuk'
 import { Route as TentangRouteImport } from './routes/tentang'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminAlumniRouteImport } from './routes/admin.alumni'
+import { Route as AdminBeritaRouteImport } from './routes/admin.berita'
+import { Route as AdminEventRouteImport } from './routes/admin.event'
+import { Route as AdminLowonganRouteImport } from './routes/admin.lowongan'
+import { Route as AdminMasukRouteImport } from './routes/admin.masuk'
+import { Route as DasborIndexRouteImport } from './routes/dasbor.index'
+import { Route as DasborEventRouteImport } from './routes/dasbor.event'
+import { Route as DasborKartuRouteImport } from './routes/dasbor.kartu'
+import { Route as DasborLamaranRouteImport } from './routes/dasbor.lamaran'
+import { Route as DasborNotifikasiRouteImport } from './routes/dasbor.notifikasi'
+import { Route as DasborPengaturanRouteImport } from './routes/dasbor.pengaturan'
+import { Route as DasborProfilRouteImport } from './routes/dasbor.profil'
+import { Route as DasborTracerRouteImport } from './routes/dasbor.tracer'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlumniRoute = AlumniRouteImport.update({
@@ -31,6 +55,16 @@ const BeritaRoute = BeritaRouteImport.update({
   path: '/berita',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DaftarRoute = DaftarRouteImport.update({
+  id: '/daftar',
+  path: '/daftar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DasborRoute = DasborRouteImport.update({
+  id: '/dasbor',
+  path: '/dasbor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventRoute = EventRouteImport.update({
   id: '/event',
   path: '/event',
@@ -41,58 +75,265 @@ const LowonganRoute = LowonganRouteImport.update({
   path: '/lowongan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LupaSandiRoute = LupaSandiRouteImport.update({
+  id: '/lupa-sandi',
+  path: '/lupa-sandi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MasukRoute = MasukRouteImport.update({
+  id: '/masuk',
+  path: '/masuk',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TentangRoute = TentangRouteImport.update({
   id: '/tentang',
   path: '/tentang',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAlumniRoute = AdminAlumniRouteImport.update({
+  id: '/alumni',
+  path: '/alumni',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBeritaRoute = AdminBeritaRouteImport.update({
+  id: '/berita',
+  path: '/berita',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEventRoute = AdminEventRouteImport.update({
+  id: '/event',
+  path: '/event',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLowonganRoute = AdminLowonganRouteImport.update({
+  id: '/lowongan',
+  path: '/lowongan',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMasukRoute = AdminMasukRouteImport.update({
+  id: '/masuk',
+  path: '/masuk',
+  getParentRoute: () => AdminRoute,
+} as any)
+const DasborIndexRoute = DasborIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborEventRoute = DasborEventRouteImport.update({
+  id: '/event',
+  path: '/event',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborKartuRoute = DasborKartuRouteImport.update({
+  id: '/kartu',
+  path: '/kartu',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborLamaranRoute = DasborLamaranRouteImport.update({
+  id: '/lamaran',
+  path: '/lamaran',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborNotifikasiRoute = DasborNotifikasiRouteImport.update({
+  id: '/notifikasi',
+  path: '/notifikasi',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborPengaturanRoute = DasborPengaturanRouteImport.update({
+  id: '/pengaturan',
+  path: '/pengaturan',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborProfilRoute = DasborProfilRouteImport.update({
+  id: '/profil',
+  path: '/profil',
+  getParentRoute: () => DasborRoute,
+} as any)
+const DasborTracerRoute = DasborTracerRouteImport.update({
+  id: '/tracer',
+  path: '/tracer',
+  getParentRoute: () => DasborRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/alumni': typeof AlumniRoute
   '/berita': typeof BeritaRoute
+  '/daftar': typeof DaftarRoute
+  '/dasbor': typeof DasborRouteWithChildren
   '/event': typeof EventRoute
   '/lowongan': typeof LowonganRoute
+  '/lupa-sandi': typeof LupaSandiRoute
+  '/masuk': typeof MasukRoute
   '/tentang': typeof TentangRoute
+  '/admin/alumni': typeof AdminAlumniRoute
+  '/admin/berita': typeof AdminBeritaRoute
+  '/admin/event': typeof AdminEventRoute
+  '/admin/lowongan': typeof AdminLowonganRoute
+  '/admin/masuk': typeof AdminMasukRoute
+  '/dasbor/event': typeof DasborEventRoute
+  '/dasbor/kartu': typeof DasborKartuRoute
+  '/dasbor/lamaran': typeof DasborLamaranRoute
+  '/dasbor/notifikasi': typeof DasborNotifikasiRoute
+  '/dasbor/pengaturan': typeof DasborPengaturanRoute
+  '/dasbor/profil': typeof DasborProfilRoute
+  '/dasbor/tracer': typeof DasborTracerRoute
+  '/admin/': typeof AdminIndexRoute
+  '/dasbor/': typeof DasborIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alumni': typeof AlumniRoute
   '/berita': typeof BeritaRoute
+  '/daftar': typeof DaftarRoute
   '/event': typeof EventRoute
   '/lowongan': typeof LowonganRoute
+  '/lupa-sandi': typeof LupaSandiRoute
+  '/masuk': typeof MasukRoute
   '/tentang': typeof TentangRoute
+  '/admin/alumni': typeof AdminAlumniRoute
+  '/admin/berita': typeof AdminBeritaRoute
+  '/admin/event': typeof AdminEventRoute
+  '/admin/lowongan': typeof AdminLowonganRoute
+  '/admin/masuk': typeof AdminMasukRoute
+  '/dasbor/event': typeof DasborEventRoute
+  '/dasbor/kartu': typeof DasborKartuRoute
+  '/dasbor/lamaran': typeof DasborLamaranRoute
+  '/dasbor/notifikasi': typeof DasborNotifikasiRoute
+  '/dasbor/pengaturan': typeof DasborPengaturanRoute
+  '/dasbor/profil': typeof DasborProfilRoute
+  '/dasbor/tracer': typeof DasborTracerRoute
+  '/admin': typeof AdminIndexRoute
+  '/dasbor': typeof DasborIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/alumni': typeof AlumniRoute
   '/berita': typeof BeritaRoute
+  '/daftar': typeof DaftarRoute
+  '/dasbor': typeof DasborRouteWithChildren
   '/event': typeof EventRoute
   '/lowongan': typeof LowonganRoute
+  '/lupa-sandi': typeof LupaSandiRoute
+  '/masuk': typeof MasukRoute
   '/tentang': typeof TentangRoute
+  '/admin/alumni': typeof AdminAlumniRoute
+  '/admin/berita': typeof AdminBeritaRoute
+  '/admin/event': typeof AdminEventRoute
+  '/admin/lowongan': typeof AdminLowonganRoute
+  '/admin/masuk': typeof AdminMasukRoute
+  '/dasbor/event': typeof DasborEventRoute
+  '/dasbor/kartu': typeof DasborKartuRoute
+  '/dasbor/lamaran': typeof DasborLamaranRoute
+  '/dasbor/notifikasi': typeof DasborNotifikasiRoute
+  '/dasbor/pengaturan': typeof DasborPengaturanRoute
+  '/dasbor/profil': typeof DasborProfilRoute
+  '/dasbor/tracer': typeof DasborTracerRoute
+  '/admin/': typeof AdminIndexRoute
+  '/dasbor/': typeof DasborIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/alumni' | '/berita' | '/event' | '/lowongan' | '/tentang'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/alumni'
+    | '/berita'
+    | '/daftar'
+    | '/dasbor'
+    | '/event'
+    | '/lowongan'
+    | '/lupa-sandi'
+    | '/masuk'
+    | '/tentang'
+    | '/admin/alumni'
+    | '/admin/berita'
+    | '/admin/event'
+    | '/admin/lowongan'
+    | '/admin/masuk'
+    | '/dasbor/event'
+    | '/dasbor/kartu'
+    | '/dasbor/lamaran'
+    | '/dasbor/notifikasi'
+    | '/dasbor/pengaturan'
+    | '/dasbor/profil'
+    | '/dasbor/tracer'
+    | '/admin/'
+    | '/dasbor/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/alumni' | '/berita' | '/event' | '/lowongan' | '/tentang'
-  id:
-    | '__root__'
+  to:
     | '/'
     | '/alumni'
     | '/berita'
+    | '/daftar'
     | '/event'
     | '/lowongan'
+    | '/lupa-sandi'
+    | '/masuk'
     | '/tentang'
+    | '/admin/alumni'
+    | '/admin/berita'
+    | '/admin/event'
+    | '/admin/lowongan'
+    | '/admin/masuk'
+    | '/dasbor/event'
+    | '/dasbor/kartu'
+    | '/dasbor/lamaran'
+    | '/dasbor/notifikasi'
+    | '/dasbor/pengaturan'
+    | '/dasbor/profil'
+    | '/dasbor/tracer'
+    | '/admin'
+    | '/dasbor'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/alumni'
+    | '/berita'
+    | '/daftar'
+    | '/dasbor'
+    | '/event'
+    | '/lowongan'
+    | '/lupa-sandi'
+    | '/masuk'
+    | '/tentang'
+    | '/admin/alumni'
+    | '/admin/berita'
+    | '/admin/event'
+    | '/admin/lowongan'
+    | '/admin/masuk'
+    | '/dasbor/event'
+    | '/dasbor/kartu'
+    | '/dasbor/lamaran'
+    | '/dasbor/notifikasi'
+    | '/dasbor/pengaturan'
+    | '/dasbor/profil'
+    | '/dasbor/tracer'
+    | '/admin/'
+    | '/dasbor/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AlumniRoute: typeof AlumniRoute
   BeritaRoute: typeof BeritaRoute
+  DaftarRoute: typeof DaftarRoute
+  DasborRoute: typeof DasborRouteWithChildren
   EventRoute: typeof EventRoute
   LowonganRoute: typeof LowonganRoute
+  LupaSandiRoute: typeof LupaSandiRoute
+  MasukRoute: typeof MasukRoute
   TentangRoute: typeof TentangRoute
 }
 
@@ -103,6 +344,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/alumni': {
@@ -119,6 +367,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BeritaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/daftar': {
+      id: '/daftar'
+      path: '/daftar'
+      fullPath: '/daftar'
+      preLoaderRoute: typeof DaftarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dasbor': {
+      id: '/dasbor'
+      path: '/dasbor'
+      fullPath: '/dasbor'
+      preLoaderRoute: typeof DasborRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/event': {
       id: '/event'
       path: '/event'
@@ -133,6 +395,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LowonganRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lupa-sandi': {
+      id: '/lupa-sandi'
+      path: '/lupa-sandi'
+      fullPath: '/lupa-sandi'
+      preLoaderRoute: typeof LupaSandiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/masuk': {
+      id: '/masuk'
+      path: '/masuk'
+      fullPath: '/masuk'
+      preLoaderRoute: typeof MasukRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tentang': {
       id: '/tentang'
       path: '/tentang'
@@ -140,15 +416,163 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TentangRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/alumni': {
+      id: '/admin/alumni'
+      path: '/alumni'
+      fullPath: '/admin/alumni'
+      preLoaderRoute: typeof AdminAlumniRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/berita': {
+      id: '/admin/berita'
+      path: '/berita'
+      fullPath: '/admin/berita'
+      preLoaderRoute: typeof AdminBeritaRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/event': {
+      id: '/admin/event'
+      path: '/event'
+      fullPath: '/admin/event'
+      preLoaderRoute: typeof AdminEventRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/lowongan': {
+      id: '/admin/lowongan'
+      path: '/lowongan'
+      fullPath: '/admin/lowongan'
+      preLoaderRoute: typeof AdminLowonganRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/masuk': {
+      id: '/admin/masuk'
+      path: '/masuk'
+      fullPath: '/admin/masuk'
+      preLoaderRoute: typeof AdminMasukRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/dasbor/': {
+      id: '/dasbor/'
+      path: '/'
+      fullPath: '/dasbor/'
+      preLoaderRoute: typeof DasborIndexRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/event': {
+      id: '/dasbor/event'
+      path: '/event'
+      fullPath: '/dasbor/event'
+      preLoaderRoute: typeof DasborEventRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/kartu': {
+      id: '/dasbor/kartu'
+      path: '/kartu'
+      fullPath: '/dasbor/kartu'
+      preLoaderRoute: typeof DasborKartuRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/lamaran': {
+      id: '/dasbor/lamaran'
+      path: '/lamaran'
+      fullPath: '/dasbor/lamaran'
+      preLoaderRoute: typeof DasborLamaranRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/notifikasi': {
+      id: '/dasbor/notifikasi'
+      path: '/notifikasi'
+      fullPath: '/dasbor/notifikasi'
+      preLoaderRoute: typeof DasborNotifikasiRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/pengaturan': {
+      id: '/dasbor/pengaturan'
+      path: '/pengaturan'
+      fullPath: '/dasbor/pengaturan'
+      preLoaderRoute: typeof DasborPengaturanRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/profil': {
+      id: '/dasbor/profil'
+      path: '/profil'
+      fullPath: '/dasbor/profil'
+      preLoaderRoute: typeof DasborProfilRouteImport
+      parentRoute: typeof DasborRoute
+    }
+    '/dasbor/tracer': {
+      id: '/dasbor/tracer'
+      path: '/tracer'
+      fullPath: '/dasbor/tracer'
+      preLoaderRoute: typeof DasborTracerRouteImport
+      parentRoute: typeof DasborRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminAlumniRoute: typeof AdminAlumniRoute
+  AdminBeritaRoute: typeof AdminBeritaRoute
+  AdminEventRoute: typeof AdminEventRoute
+  AdminLowonganRoute: typeof AdminLowonganRoute
+  AdminMasukRoute: typeof AdminMasukRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAlumniRoute: AdminAlumniRoute,
+  AdminBeritaRoute: AdminBeritaRoute,
+  AdminEventRoute: AdminEventRoute,
+  AdminLowonganRoute: AdminLowonganRoute,
+  AdminMasukRoute: AdminMasukRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface DasborRouteChildren {
+  DasborEventRoute: typeof DasborEventRoute
+  DasborKartuRoute: typeof DasborKartuRoute
+  DasborLamaranRoute: typeof DasborLamaranRoute
+  DasborNotifikasiRoute: typeof DasborNotifikasiRoute
+  DasborPengaturanRoute: typeof DasborPengaturanRoute
+  DasborProfilRoute: typeof DasborProfilRoute
+  DasborTracerRoute: typeof DasborTracerRoute
+  DasborIndexRoute: typeof DasborIndexRoute
+}
+
+const DasborRouteChildren: DasborRouteChildren = {
+  DasborEventRoute: DasborEventRoute,
+  DasborKartuRoute: DasborKartuRoute,
+  DasborLamaranRoute: DasborLamaranRoute,
+  DasborNotifikasiRoute: DasborNotifikasiRoute,
+  DasborPengaturanRoute: DasborPengaturanRoute,
+  DasborProfilRoute: DasborProfilRoute,
+  DasborTracerRoute: DasborTracerRoute,
+  DasborIndexRoute: DasborIndexRoute,
+}
+
+const DasborRouteWithChildren =
+  DasborRoute._addFileChildren(DasborRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   AlumniRoute: AlumniRoute,
   BeritaRoute: BeritaRoute,
+  DaftarRoute: DaftarRoute,
+  DasborRoute: DasborRouteWithChildren,
   EventRoute: EventRoute,
   LowonganRoute: LowonganRoute,
+  LupaSandiRoute: LupaSandiRoute,
+  MasukRoute: MasukRoute,
   TentangRoute: TentangRoute,
 }
 export const routeTree = rootRouteImport

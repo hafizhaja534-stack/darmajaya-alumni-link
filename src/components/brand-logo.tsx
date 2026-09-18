@@ -25,7 +25,7 @@ export function BrandLogo({
             tone === "light" ? "text-primary-foreground" : "text-foreground",
           )}
         >
-          Darmajaya Alumni Connect
+          IKA DARMAJAYA
         </span>
         <span
           className={cn(
@@ -33,7 +33,7 @@ export function BrandLogo({
             tone === "light" ? "text-primary-foreground/70" : "text-muted-foreground",
           )}
         >
-          Portal Resmi Alumni IIB Darmajaya
+          Ikatan Keluarga Alumni IIB Darmajaya
         </span>
       </span>
     </Link>

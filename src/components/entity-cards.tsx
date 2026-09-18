@@ -30,24 +30,8 @@ export function AlumniCard({ alumni }: { alumni: AlumniProfile }) {
         />
         <div>
           <h3 className="text-base font-semibold text-foreground">{alumni.full_name}</h3>
-          <p className="text-sm text-muted-foreground">
-            {alumni.program} &middot; {alumni.graduation_year}
-          </p>
+          <p className="text-sm text-muted-foreground">{alumni.program}</p>
         </div>
-        <div className="space-y-1 text-sm">
-          <p className="font-medium text-foreground">{alumni.job_title}</p>
-          <p className="text-muted-foreground">{alumni.company_name}</p>
-          <p className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
-            <MapPin className="h-3.5 w-3.5" /> {alumni.city}
-          </p>
-        </div>
-        {alumni.verification_status === "approved" ? (
-          <Badge variant="secondary" className="bg-primary-soft text-primary">
-            Terverifikasi
-          </Badge>
-        ) : (
-          <Badge variant="outline">Menunggu verifikasi</Badge>
-        )}
       </CardContent>
     </Card>
   );

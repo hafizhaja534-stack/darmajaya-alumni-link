@@ -39,18 +39,13 @@ export const Route = createFileRoute("/berita")({
 
 function BeritaPage() {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("Semua");
-
-  const categories = useMemo(() => ["Semua", ...new Set(NEWS.map((n) => n.category))], []);
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
     return NEWS.filter(
-      (n) =>
-        (!q || n.title.toLowerCase().includes(q) || n.excerpt.toLowerCase().includes(q)) &&
-        (category === "Semua" || n.category === category),
+      (n) => !q || n.title.toLowerCase().includes(q) || n.excerpt.toLowerCase().includes(q),
     );
-  }, [query, category]);
+  }, [query]);
 
   return (
     <PublicLayout>
@@ -61,8 +56,8 @@ function BeritaPage() {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-        <div className="mb-8 flex flex-wrap items-center gap-3">
-          <div className="relative min-w-64 flex-1">
+        <div className="mb-8">
+          <div className="relative min-w-64">
             <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={query}
@@ -72,27 +67,15 @@ function BeritaPage() {
               aria-label="Cari berita"
             />
           </div>
-          <div className="flex flex-wrap gap-2">
-            {categories.map((c) => (
-              <Button
-                key={c}
-                size="sm"
-                variant={c === category ? "default" : "outline"}
-                onClick={() => setCategory(c)}
-              >
-                {c}
-              </Button>
-            ))}
-          </div>
         </div>
 
         {list.length === 0 ? (
           <EmptyState
             title="Berita tidak ditemukan"
-            description="Coba kata kunci lain atau pilih kategori yang berbeda."
+            description="Coba kata kunci pencarian lain."
           />
         ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6">
             {list.map((n) => (
               <Card key={n.id} className="card-hover overflow-hidden pt-0">
                 <img
